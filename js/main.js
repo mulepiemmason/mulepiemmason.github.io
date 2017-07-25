@@ -283,16 +283,6 @@ $(document).ready(function () {
      Contact Form 
      ============================================================ */
 
-    $('.email-contacts').on('click', function(event) {
-        var names = $('#name').val;
-        var phoneNumber = $('#phone').val;
-        Email.send("jovan.emmason@gmail.com",
-        "jovan.emmason@gmail.com",
-        "Ximba Uganda Client",
-        "Attached below is a new clients details\nNames: " + names + "\nPhone Number: " + phoneNumber,
-        {token: "d1eeedea-ded7-48e1-a40d-ceb5c10e3483"});
-    });
-
     $('.tz_submit').on('click', function (event) {
         event.preventDefault();
         var name_attr = [];

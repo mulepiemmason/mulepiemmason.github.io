@@ -148,7 +148,7 @@
                                                 <form action="javascript:void(0)" method="post" _lpchecked="1">
                                                     <input name="name" id="name" data-email="required" placeholder="Your Name" class="medium-input border-radius-4" type="text">
                                                     <input name="phone" id="phone" placeholder="Your Phone Number" class="medium-input border-radius-4" type="text">
-                                                    <button type="submit" class="email-contacts btn btn-large propClone bg-light-green text-black display-block width-100" style="color: rgb(243, 243, 243) !important; background-color: rgb(50, 182, 230) !important; font-size: 13px; font-weight: 500; font-family: &#39;Montserrat&#39;,sans-serif; text-transform: none;" id="ui-id-48">SEND MESSAGE</button>                                                
+                                                    <button onclick="sendContacts()" class="send-contacts btn btn-large propClone bg-light-green text-black display-block width-100" style="color: rgb(243, 243, 243) !important; background-color: rgb(50, 182, 230) !important; font-size: 13px; font-weight: 500; font-family: &#39;Montserrat&#39;,sans-serif; text-transform: none;" id="send-contacts">SEND MESSAGE</button>                                                
                                                 </form>
                                             </div>
                                         </div>
@@ -413,7 +413,27 @@
         <script type="text/javascript" src="./index_files/jquery.appear.js.download"></script>
         <script type="text/javascript" src="./index_files/smooth-scroll.js.download"></script>
         <script type="text/javascript" src="./index_files/bootstrap.min.js.download"></script>
-        <script type="text/javascript" src="https://smtpjs.com/smtp.js"></script>
+        <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
+        <script type="text/javascript">
+           (function(){
+              emailjs.init("user_A7YKeiI3xur813RKUmtXH");
+           })();
+        </script>
+
+        <script type="text/javascript">
+            function sendContacts() {
+                var names = $('#name').val();
+                var phoneNumber = $('#phone').val();
+                // console.log(names);
+                // console.log(phoneNumber);
+                emailjs.send("default_service","ximba_contacts",{names: names, phone_number: phoneNumber})
+                .then(function(response) {
+                   console.log("SUCCESS. status=%d, text=%s", response.status, response.text);
+                }, function(err) {
+                   console.log("FAILED. error=", err);
+                });
+            }
+        </script>
         <!-- wow animation -->
         <script type="text/javascript" src="./index_files/wow.min.js.download"></script>
         <!-- owl carousel -->
